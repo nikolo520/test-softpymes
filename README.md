@@ -49,13 +49,4 @@ La prueba consiste en realizar un CRUD completo para el módulo de Example, lo c
 6. Se require ELIMINAR un registro especifico.
 
 
-Mi flujo trabajo
-------------------
-
-1. entendimiento de la funcionalidad
-2. investigación
-3. analisis
-4. programacion
-5. monitoreo o testeo
-
 

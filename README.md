@@ -48,5 +48,8 @@ La prueba consiste en realizar un CRUD completo para el módulo de Example, lo c
 5. Se requiere ACTUALIZAR todos la información de un registro especifico..
 6. Se require ELIMINAR un registro especifico.
 
+## Script DATABASE
+
+importar el script softpymes_test.sql
 
 

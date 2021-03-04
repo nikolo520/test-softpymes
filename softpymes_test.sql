@@ -33,7 +33,8 @@ USE `softpymes_test`;
 CREATE TABLE `example` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `identification` varchar(10) NOT NULL UNIQUE,
+  `description` varchar(100) NULL,
   `status` tinyint(1) NOT NULL,
   `create_date` datetime NOT NULL,
   `update_date` datetime NOT NULL
@@ -43,8 +44,8 @@ CREATE TABLE `example` (
 -- Volcado de datos para la tabla `example`
 --
 
-INSERT INTO `example` (`id`, `name`, `description`, `status`, `create_date`, `update_date`) VALUES
-(1, 'admin', 'prueba', 1, '2021-02-11 00:00:00', '2021-02-11 00:00:00');
+INSERT INTO `example` (`id`, `name`, `identification`, `description`, `status`, `create_date`, `update_date`) VALUES
+(1, 'admin', '1234567', 'prueba', 1, now(), now());
 
 --
 -- Índices para tablas volcadas

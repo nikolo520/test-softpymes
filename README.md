@@ -17,7 +17,7 @@ Para la instalación de recursos, se debe tener en cuenta los siguientes pasos:
 ### Creación del Entorno
 Para la creación del entorno virtual se deben ejecutar los siguientes comandos:
 ```
-pyhton -m venv venv
+python -m venv venv
 ```
 
 ### Instalar Requerimientos
@@ -37,27 +37,41 @@ Para importar la base de datos, hacer uso del script ```softpymes_test.sql``` qu
 ### Ejecutar API
 Ejecutar: Los comandos a continuación permitirán la ejecución de la API
 ```
+cd api
 python run.py
 ```
 
 ### Probar la API - POSTMAN
+Entre los archivos, se deja un endpoint o servicio de test, para que validen el funcionamiento del API.
 ```
 http://127.0.0.1:5000/api/v1/index
 ```
 
-# Objetivo de la Prueba
+# Objetivo de la prueba
 
 La prueba consiste en realizar un CRUD completo para el módulo de Example, lo cual se divide en los siguientes puntos:
 
 1. Se requiere CONSULTAR todos los registros de la tabla.
-2. Se requiere CONSULTAR todos los registros de la tabla por id.
-3. Se require CONSULTAR todos los registros de la tabla de manera paginada y consultar por cualquier criterio de busqueda.
-4. Se require GUARDAR un registro en la tabla.
-5. Se requiere ACTUALIZAR todos la información de un registro especifico..
-6. Se require ELIMINAR un registro especifico.
+2. Se requiere CONSULTAR todos los registros de la tabla por ID.
+3. Se requiere CONSULTAR todos los registros por un estado específico.
+4. Se require CONSULTAR todos los registros de la tabla de manera paginada y consultar por cualquier criterio de búsqueda.
+5. Se require GUARDAR un registro en la tabla.
+6. Se requiere ACTUALIZAR toda la información de un registro específico.
+7. Se require ELIMINAR un registro específico.
+
+## Criterios de aceptación
+
+Con el objetivo de validar el conocimiento y cumplimiento de los puntos mencionados anteriormente,
+los criterios que se evaluarán son los siguientes:
+
+1. Implementación de buenas prácticas
+2. Validaciones de posibles errores, tanto de código como en resultado de las consultas
+3. La forma de responder una vez se consulten los endpoint o servicios que se crearán para consumir él API
+4. Creatividad enfocado a la forma de solucionar cada uno de los puntos de la prueba, las respuestas del API
+
 
 ## Script DATABASE
 
-importar el script softpymes_test.sql
+Importar el archivo con el script ```softpymes_test.sql``` se encuentra en la raíz de este proyecto
 
 

@@ -16,10 +16,11 @@ class ExampleModel(BaseModel):
     __tablename__ = 'example'
 
     name = db.Column(db.String(50), unique=True, nullable=False, comment='Nombre de Ejemplo')
-    description = db.Column(db.String(100), nullable=False, comment='Descripción de Ejemplo')
+    identification = db.Column(db.String(100), nullable=False, unique=True, comment='Identificación de Ejemplo')
+    description = db.Column(db.String(100), nullable=True, comment='Descripción de Ejemplo')
     status = db.Column(TINYINT(1), default=0, nullable=False, comment='Estado 0=Inactivo, 1=Activo')
 
-    @validates(('name', 'description'))
+    @validates(('name', 'identification'))
     def validate_name_permit(self, key, name):
         try:
             FieldValidations.is_none(key, name)

@@ -10,7 +10,7 @@ from app.controllers import ExampleController as Controller
 
 
 @api.route('/index', methods=['GET'])
-def get_all():
+def get_index():
     response = Controller.get_index()
     return jsonify(data=response)
 

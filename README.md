@@ -2,6 +2,9 @@
 API Test Softpymes, con manejo de excepciones, manejo de base de datos MySQL
 desarrollada en lenguaje Python, framework Flask y ORM SqlAlchemy
 
+## Tiempo de la prueba
+
+La prueba esta estimada en un tiempo de 30 minutos y un tiempo máximo no superior a 1 hora.
 
 ## Requerimientos
 
@@ -21,11 +24,17 @@ python -m venv venv
 ```
 
 ### Instalar Requerimientos
+
+La aplicación ya tiene las librerías necesarias para el desarrollo de la prueba
+
 ```
 source ./venv/bin/activate
 pip install --upgrade pip
 pip install -r requirenments.txt
 ```
+
+> NOTA: Es libre de instalar las librerías que desee para dar solución de la prueba, pero tenga en cuenta
+> el tiempo limite de la prueba
 
 ### Importar la Base de Datos
 Para importar la base de datos, hacer uso del script ```softpymes_test.sql``` que se encuentra en la raíz del proyecto
@@ -58,6 +67,8 @@ La prueba consiste en realizar un CRUD completo para el módulo de Example, lo c
 5. Se require GUARDAR un registro en la tabla.
 6. Se requiere ACTUALIZAR toda la información de un registro específico.
 7. Se require ELIMINAR un registro específico.
+
+> Nota: Tener en cuenta que las peticiones sea hacen enviando y recibiendo objetos JSON
 
 ## Criterios de aceptación
 

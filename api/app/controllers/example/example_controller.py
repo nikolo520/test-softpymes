@@ -5,7 +5,7 @@
 #########################################################
 
 from app.exception import InternalServerError
-from app.utils import FieldValidations
+from app.models import ExampleModel
 
 
 class ExampleController:

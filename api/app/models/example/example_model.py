@@ -9,6 +9,7 @@ from app.models import BaseModel
 from app.exception import InternalServerError
 from sqlalchemy.dialects.mysql import TINYINT
 from sqlalchemy.orm import validates
+from sqlalchemy.sql import or_
 from app.utils import FieldValidations
 
 

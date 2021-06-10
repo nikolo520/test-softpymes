@@ -6,6 +6,7 @@
 
 from app.exception import InternalServerError
 from app.models import ExampleModel
+from app import db
 
 
 class ExampleController:

@@ -10,7 +10,8 @@ La prueba esta estimada en un tiempo de 30 minutos y un tiempo máximo no superi
 Se requiere tener instalados:
 - Python versiones 3 (superiores a la 3.6) 
 - virtualenv 
-- IDE pycharm (opcional, pero cualquier IDE te sirve)
+- IDE pycharm (opcional, pero cualquier IDE te sirve, ejemplo: VSCODE)
+- POSTMAN
 - Gestor de Base de Batos (MySQL)
 
 ## Instalación

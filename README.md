@@ -25,7 +25,7 @@ python -m venv venv
 ```
 > NOTA: el comando python dependen de la versión de python instalada en tu equipo,
 > ejemplo: si tienes python 3.7.9 instalado el comando seria python3.7.9 -m venv venv
-> ó python3 .m venv venv con cualquiera de las dos opciones te debe crear el entorno virtual
+> ó python3 -m venv venv con cualquiera de las dos opciones te debe crear el entorno virtual
 
 ### Instalar Requerimientos
 

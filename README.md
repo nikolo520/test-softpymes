@@ -1,17 +1,16 @@
 # API Python Flask
-API Test SoftPymes, con manejo de excepciones, manejo de base de datos MySQL
-desarrollada en lenguaje Python, framework Flask y ORM SqlAlchemy.
+API Test SoftPymes, cuenta con manejo de excepciones, manejo de base de datos MySQL
+está desarrollada en lenguaje Python, con framework Flask y ORM SqlAlchemy.
 
 ## Tiempo de la prueba
 La prueba esta estimada en un tiempo de 30 minutos y un tiempo máximo no superior a 1 hora.
 
 ## Requerimientos
-
-Se requiere tener instalados:
+Para ejecutar el proyecto, se requiere tener instalados:
 - Python versiones 3 (superiores a la 3.6) 
 - virtualenv 
 - IDE pycharm (opcional, pero cualquier IDE te sirve, ejemplo: VSCODE)
-- POSTMAN
+- POSTMAN (Para realizar pruebas de los endpoint)
 - Gestor de Base de Batos (MySQL)
 
 ## Instalación
@@ -35,7 +34,7 @@ es ejecutar los siguientes comandos en la raíz del proyecto:
 ```
 source ./venv/bin/activate
 pip install --upgrade pip
-pip install -r requirenments.txt
+pip install -r requirements.txt
 ```
 
 > NOTA: Es libre de instalar las librerías que desee para dar solución a la prueba, pero tenga en cuenta
@@ -61,7 +60,7 @@ Entre los archivos, se deja un endpoint o servicio de test, para que validen el 
 http://127.0.0.1:5000/api/v1/index
 ```
 > NOTA: tener en cuenta que todas las rutas que usted cree, para poder consultarlas por medio de postman
-> debe hacerlo agregándolas después de http://127.0.0.1:5000/api/v1/ <-- aquí viene su ruta o endpoint
+> debe hacerlo agregándolas después de http://127.0.0.1:5000/api/v1/ <- aquí viene su ruta o endpoint o servicio
 
 # Objetivo de la prueba
 
@@ -90,9 +89,10 @@ los criterios que se evaluarán son los siguientes:
 
 # Información de contacto
 Una vez terminada la prueba, enviar un correo adjuntando la prueba, sin tener en cuenta la carpeta venv 
-(esta carpeta puede pesar hasta 60 MB omítala al momento de comprimir y adjuntar su prueba), con los siguientes datos:
+(esta carpeta puede pesar hasta 60 MB, omítala al momento de comprimir y adjuntar su prueba), 
+con los siguientes datos:
 
-- Enviar a: lmelo@softpymes.com.co
+- Enviar la prueba al correo: lmelo@softpymes.com.co
 - Asunto: Test SoftPymes - Backend Python
 - Mensaje: En el mensaje agregar su nombre completo, además de sus conclusiones de la prueba, como se sintió, 
   que problemas se le presentaron y demás que desee contarnos.

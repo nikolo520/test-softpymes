@@ -20,4 +20,5 @@ class ExampleController:
             }
             return response
         except Exception as e:
+            print('Error: {er}'.format(er=e))
             raise InternalServerError(e)

@@ -87,10 +87,10 @@ los criterios que se evaluarán son los siguientes:
 3. La forma de responder una vez se consulten los endpoint o servicios que se crearán para consumir él API
 4. Creatividad enfocada a la forma de solucionar cada uno de los puntos de la prueba, las respuestas del API
 
-# Información de contacto
-Una vez terminada la prueba, enviar un correo adjuntando la prueba, sin tener en cuenta la carpeta venv 
-(esta carpeta puede pesar hasta 60 MB, omítala al momento de comprimir y adjuntar su prueba), 
-con los siguientes datos:
+# Información de importante
+Una vez terminada la prueba, debe crear un repositorio con su cuenta personal de git en (GitHub o GitLab o bitbucket) de manera público y,
+enviar un correo con el link del repositorio que contiene la prueba, tener en cuenta que solo se aceptara el envio de la prueba, de la manera
+mencionada anteriormente, el correo debe tener los siguientes datos:
 
 - Enviar la prueba al correo: lmelo@softpymes.com.co
 - Asunto: Test SoftPymes - Backend Python

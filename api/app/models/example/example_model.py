@@ -21,6 +21,15 @@ class ExampleModel(BaseModel):
     description = db.Column(db.String(100), nullable=True, comment='Descripción de Ejemplo')
     status = db.Column(TINYINT(1), default=0, nullable=False, comment='Estado 0=Inactivo, 1=Activo')
 
+    def export_data(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'description': self.description,
+            'identification': self.identification,
+            'status': bool(self.status)
+        }
+
     @validates(('name', 'identification'))
     def validate_name_permit(self, key, name):
         try:

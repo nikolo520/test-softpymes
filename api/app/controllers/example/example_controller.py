@@ -38,6 +38,7 @@ class ExampleController:
             print('Error: {er}'.format(er=e))
             raise InternalServerError(e)
     
+    @staticmethod
     def detail(id):
         try:
             response = {
@@ -87,15 +88,28 @@ class ExampleController:
     #         print('Error: {er}'.format(er=e))
     #         raise InternalServerError(e)
 
-    # @staticmethod
-    # def delete(id):
-    #     try:
-    #         response = {
-    #             'ok': True,
-    #             'message': 'Response OK, method get_index'
-    #         }
-    #         return response
-    #     except Exception as e:
-    #         print('Error: {er}'.format(er=e))
-    #         raise InternalServerError(e)
-    
+    @staticmethod
+    def delete(id):
+        try:
+            try:
+                response = {
+                    'ok': True,
+                    'message': 'Response OK, method get_index'
+                }
+                objeto = db.session.query(ExampleModel).filter_by(id=id).first()
+                if objeto:
+                    objeto.delete()
+                    response['status'] = True
+                    response['message'] = "Se eliminó el registro exitosamente"
+                else:
+                    response['status'] = True
+                    response['message'] = "No se encontraron registros con este id"
+            except:
+                response = {
+                    'ok': False,
+                    'message': 'Error'
+                }
+            return response
+        except Exception as e:
+            print('Error: {er}'.format(er=e))
+            raise InternalServerError(e)

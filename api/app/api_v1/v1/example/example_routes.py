@@ -34,5 +34,5 @@ def edit(id):
 
 @api.route('/del/<id>', methods=['POST'])
 def delete(id):
-    response = Controller.delete()
+    response = Controller.delete(id)
     return jsonify(data=response)

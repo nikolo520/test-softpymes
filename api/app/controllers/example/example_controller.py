@@ -45,14 +45,19 @@ class ExampleController:
                 'message': "No se encontraron modelos con este id",
                 'data':{}
             }
-            objeto = db.session.query(ExampleModel).filter_by(id=id)
+            objeto = db.session.query(ExampleModel).filter_by(id=id).first()
             if objeto:
                 response['status'] = True
                 response['message'] = "Consulta exitosa"
-                response['data'] = objeto.first()
+                response['data'] = {
+                        "id" : objeto.id,
+                        "name" : objeto.name,
+                        "description" : objeto.description,
+                        "status" : objeto.status
+                    }
             else:
                 response['status'] = True
-                response['data'] = objeto.first()
+                response['message'] = "No se encontraron registros con este id"
             return response
         except Exception as e:
             print('Error: {er}'.format(er=e))

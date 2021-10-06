@@ -21,18 +21,21 @@ def detail(id):
 
 @api.route('/create', methods=['POST'])
 def create():
-    if request.method == 'POST':
-        if request.form:
-            response = Controller.create(request.form)
-            return jsonify(data=response)
+    if request.form:
+        response = Controller.create(request.form)
+        return jsonify(data=response)
     else:
         return jsonify(data={'ok':False, 'message':'Bad Request'})
 
 
+
 @api.route('/edit/<id>', methods=['POST'])
 def edit(id):
-    response = Controller.edit()
-    return jsonify(data=response)
+    if request.form:
+        response = Controller.edit(id, request.form)
+        return jsonify(data=response)
+    else:
+        return jsonify(data={'ok':False, 'message':'Bad Request'})
 
 @api.route('/del/<id>', methods=['POST'])
 def delete(id):

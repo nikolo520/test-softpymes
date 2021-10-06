@@ -14,14 +14,15 @@ class ExampleController:
 
     @staticmethod
     def get_index():
+        response = {
+            'status': False,
+            'message': "No se encontraron registros",
+            'data':[]
+        }
         try:
-            response = {
-                'ok': False,
-                'message': "No se encontraron modelos",
-                'data':[]
-            }
+            
             modelos = db.session.query(ExampleModel).all()
-            response['ok']=True
+            response['status']=True
             if len(modelos)>0:
                 response['message'] = 'Consulta exitosa'
                 for modelo in modelos:
@@ -34,10 +35,14 @@ class ExampleController:
                     response['data'].append(temp)
             else:
                 response['message'] = 'No se encontraron modelos'
-            return response
+            
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            raise InternalServerError(e)
+            response = {
+                'status': False,
+                'message': "Error al intentar consultar la información (ERROR_CODE => 1)",
+            }
+        return response
     
     @staticmethod
     def detail(id):
@@ -63,7 +68,11 @@ class ExampleController:
             return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            raise InternalServerError(e)
+            response = {
+                'status': False,
+                'message': "Error al intentar consultar la información (ERROR_CODE => 2)",
+            }
+        return response
 
     @staticmethod
     def create(form):
@@ -76,32 +85,56 @@ class ExampleController:
                 )
             objeto.save()
             response = {
-                'ok': True,
+                'status': True,
                 'message': 'Regitro creado exitosamente'
             }
             return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            raise InternalServerError(e)
+            response = {
+                'status': False,
+                'message': "Error al intentar consultar la información (ERROR_CODE => 3)",
+            }
+        return response
     
-    # @staticmethod
-    # def edit():
-    #     try:
-    #         response = {
-    #             'ok': True,
-    #             'message': 'Response OK, method get_index'
-    #         }
-    #         return response
-    #     except Exception as e:
-    #         print('Error: {er}'.format(er=e))
-    #         raise InternalServerError(e)
+    @staticmethod
+    def edit(id,form):
+        response = {
+            'status': False,
+            'message': "No se encontraron modelos",
+        }
+        try:
+            
+            objeto = db.session.query(ExampleModel).filter_by(id=id).first()
+            if objeto:
+                objeto.update(
+                    name=form['name'],
+                    identification=form['identification'],
+                    description=form['description'],
+                    status=form['status']
+                    )
+                objeto.save()
+                response = {
+                    'status': True,
+                    'message': 'Regitro creado exitosamente'
+                }
+            else:
+                response['status'] = True
+                response['message'] = "No se encontraron registros con este id"
+        except Exception as e:
+            print('Error: {er}'.format(er=e))
+            response = {
+                'status': False,
+                'message': "Error al intentar consultar la información (ERROR_CODE => 4)",
+            }
+        return response
 
     @staticmethod
     def delete(id):
         try:
             try:
                 response = {
-                    'ok': True,
+                    'status': True,
                     'message': 'Response OK, method get_index'
                 }
                 objeto = db.session.query(ExampleModel).filter_by(id=id).first()
@@ -114,10 +147,14 @@ class ExampleController:
                     response['message'] = "No se encontraron registros con este id"
             except:
                 response = {
-                    'ok': False,
+                    'status': False,
                     'message': 'Error'
                 }
             return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            raise InternalServerError(e)
+            response = {
+                'status': False,
+                'message': "Error al intentar consultar la información (ERROR_CODE => 5)",
+            }
+        return response

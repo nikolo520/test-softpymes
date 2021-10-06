@@ -20,7 +20,6 @@ class ExampleController:
             'data':[]
         }
         try:
-            
             modelos = db.session.query(ExampleModel).all()
             response['status']=True
             if len(modelos)>0:
@@ -46,12 +45,13 @@ class ExampleController:
     
     @staticmethod
     def detail(id):
+        response = {
+            'status': False,
+            'message': "No se encontraron modelos con este id",
+            'data':{}
+        }
+        
         try:
-            response = {
-                'status': False,
-                'message': "No se encontraron modelos con este id",
-                'data':{}
-            }
             objeto = db.session.query(ExampleModel).filter_by(id=id).first()
             if objeto:
                 response['status'] = True
@@ -62,16 +62,9 @@ class ExampleController:
                         "description" : objeto.description,
                         "status" : objeto.status
                     }
-            else:
-                response['status'] = True
-                response['message'] = "No se encontraron registros con este id"
-            return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            response = {
-                'status': False,
-                'message': "Error al intentar consultar la información (ERROR_CODE => 2)",
-            }
+            response['message'] ="Error al intentar consultar la información (ERROR_CODE => 2)"
         return response
 
     @staticmethod
@@ -88,7 +81,6 @@ class ExampleController:
                 'status': True,
                 'message': 'Regitro creado exitosamente'
             }
-            return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
             response = {
@@ -101,7 +93,7 @@ class ExampleController:
     def edit(id,form):
         response = {
             'status': False,
-            'message': "No se encontraron modelos",
+            'message': "No se encontraron registros con este id",
         }
         try:
             
@@ -118,43 +110,26 @@ class ExampleController:
                     'status': True,
                     'message': 'Regitro creado exitosamente'
                 }
-            else:
-                response['status'] = True
-                response['message'] = "No se encontraron registros con este id"
+
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            response = {
-                'status': False,
-                'message': "Error al intentar consultar la información (ERROR_CODE => 4)",
-            }
+            response['message'] = "Error al intentar consultar la información (ERROR_CODE => 4)"
         return response
 
     @staticmethod
     def delete(id):
+        response = {
+            'status': False,
+            'message': 'No se encontraron registros con este id'
+        }
         try:
-            try:
-                response = {
-                    'status': True,
-                    'message': 'Response OK, method get_index'
-                }
-                objeto = db.session.query(ExampleModel).filter_by(id=id).first()
-                if objeto:
-                    objeto.delete()
-                    response['status'] = True
-                    response['message'] = "Se eliminó el registro exitosamente"
-                else:
-                    response['status'] = True
-                    response['message'] = "No se encontraron registros con este id"
-            except:
-                response = {
-                    'status': False,
-                    'message': 'Error'
-                }
+            objeto = db.session.query(ExampleModel).filter_by(id=id).first()
+            if objeto:
+                objeto.delete()
+                response['status'] = True
+                response['message'] = "Se eliminó el registro exitosamente"
             return response
         except Exception as e:
             print('Error: {er}'.format(er=e))
-            response = {
-                'status': False,
-                'message': "Error al intentar consultar la información (ERROR_CODE => 5)",
-            }
+            response['message'] = "Error al intentar consultar la información (ERROR_CODE => 5)"
         return response

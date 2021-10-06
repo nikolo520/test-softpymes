@@ -4,6 +4,7 @@
 # Controller Example
 #########################################################
 
+from flask.globals import session
 from app.exception import InternalServerError
 from app.models import ExampleModel
 from app import db
@@ -64,17 +65,24 @@ class ExampleController:
             print('Error: {er}'.format(er=e))
             raise InternalServerError(e)
 
-    # @staticmethod
-    # def create():
-    #     try:
-    #         response = {
-    #             'ok': True,
-    #             'message': 'Response OK, method get_index'
-    #         }
-    #         return response
-    #     except Exception as e:
-    #         print('Error: {er}'.format(er=e))
-    #         raise InternalServerError(e)
+    @staticmethod
+    def create(form):
+        try:
+            objeto = ExampleModel(
+                name=form['name'],
+                identification=form['identification'],
+                description=form['description'],
+                status=True
+                )
+            objeto.save()
+            response = {
+                'ok': True,
+                'message': 'Regitro creado exitosamente'
+            }
+            return response
+        except Exception as e:
+            print('Error: {er}'.format(er=e))
+            raise InternalServerError(e)
     
     # @staticmethod
     # def edit():

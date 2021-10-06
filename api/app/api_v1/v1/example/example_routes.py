@@ -19,13 +19,15 @@ def detail(id):
     response = Controller.detail(id)
     return jsonify(data=response)
 
-@api.route('/create/<id>', methods=['POST'])
-def create(id):
-    print("*********")
-    print(id)
-    print("***********")
-    response = Controller.get_index()
-    return jsonify(data=response)
+@api.route('/create', methods=['POST'])
+def create():
+    if request.method == 'POST':
+        if request.form:
+            response = Controller.create(request.form)
+            return jsonify(data=response)
+    else:
+        return jsonify(data={'ok':False, 'message':'Bad Request'})
+
 
 @api.route('/edit/<id>', methods=['POST'])
 def edit(id):

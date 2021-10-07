@@ -9,10 +9,10 @@ from app.api_v1 import api
 from app.controllers import ExampleController as Controller
 
 
-@api.route('/index', methods=['GET'])
+@api.route('/index', methods=['POST'])
 def get_index():
-    #http://127.0.0.1:5000/api/v1/get_index
-    response = Controller.get_index()
+    #http://127.0.0.1:5000/api/v1/index
+    response = Controller.get_index(request.json)
     return jsonify(data=response)
 
 @api.route('/detail/<id>', methods=['POST'])
@@ -23,9 +23,9 @@ def detail(id):
 
 @api.route('/create', methods=['POST'])
 def create():
-    #http://127.0.0.1:5000/api/v1/create   ;;;;;; form-data
-    if request.form:
-        response = Controller.create(request.form)
+    #http://127.0.0.1:5000/api/v1/create   ;;;;;; raw -> json
+    if request.json:
+        response = Controller.create(request.json)
         return jsonify(data=response)
     else:
         return jsonify(data={'ok':False, 'message':'Bad Request'})
@@ -34,9 +34,9 @@ def create():
 
 @api.route('/edit/<id>', methods=['POST'])
 def edit(id):
-    #http://127.0.0.1:5000/api/v1/edit/id   ;;;;;; form-data
-    if request.form:
-        response = Controller.edit(id, request.form)
+    #http://127.0.0.1:5000/api/v1/edit/id   ;;;;;; raw -> json
+    if request.json:
+        response = Controller.edit(id, request.json)
         return jsonify(data=response)
     else:
         return jsonify(data={'ok':False, 'message':'Bad Request'})

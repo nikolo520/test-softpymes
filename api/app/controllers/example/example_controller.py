@@ -20,26 +20,21 @@ class ExampleController:
             'data':[]
         }
         try:
-            registros = db.session.query(ExampleModel).all()
-            # name = params.get('name',False)
-            # top = params.get('top',False)
-            
-            # if name:
-            #     registros = db.session.query(ExampleModel).filter(ExampleModel.name.contains(name)).all()#paginate(page=1, per_page=10, error_out=False).scalar() #filter(ExampleModel.name.like(name + '%'))
-            
-            if len(registros)>0:
-                response['status']=True
-                response['message'] = 'Consulta exitosa'
-                for registro in registros:
-                    temp = {
-                        "id" : registro.id,
-                        "name" : registro.name,
-                        "description" : registro.description,
-                        "status" : registro.status
-                    }
-                    response['data'].append(temp)
-            else:
-                response['message'] = 'No se encontraron registros'
+            name = params.get('name','')
+            top = params.get('top',10)
+            page = params.get('page',1)
+            registros = db.session.query(ExampleModel).paginate(page=page, per_page=top, error_out=False)
+            response['message'] = 'No se encontraron registros'
+            response['status']=True
+            response['message'] = 'Consulta exitosa'
+            for registro in registros.items:
+                temp = {
+                    "id" : registro.id,
+                    "name" : registro.name,
+                    "description" : registro.description,
+                    "status" : registro.status
+                }
+                response['data'].append(temp)
             
         except Exception as e:
             print('Error: {er}'.format(er=e))

@@ -23,7 +23,7 @@ class ExampleController:
             name = params.get('name','')
             top = params.get('top',10)
             page = params.get('page',1)
-            registros = db.session.query(ExampleModel).paginate(page=page, per_page=top, error_out=False)
+            registros = db.session.query(ExampleModel).filter(ExampleModel.name.ilike(name+'%')).paginate(page=page, per_page=top, error_out=False)
             response['message'] = 'No se encontraron registros'
             response['status']=True
             response['message'] = 'Consulta exitosa'
